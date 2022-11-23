@@ -1,0 +1,64 @@
+const inquirer = require('inquirer');
+// import and require mysql2
+const mysql = require('mysql2');
+
+const cTable = require('console.table');
+
+const questions = [
+    {
+        type:'list',
+        message: 'What would you like to do?',
+        choices: [View deparments, view all roles, view all employees, add a department,
+        add a role, add an employee, update an employee role],
+        
+    },
+    {
+        type: 'input',
+        name:'deparment',
+        message:'Enter name of department',
+        when(answers) {
+            return answers.team === 'add a deparment'
+        }
+     },
+     {
+        type: 'input',
+        name:'name',
+        message:'Add Employee Name (first,last)',
+        when(answers) {
+            return answers.team === 'add an employee'
+        }
+     },
+     {
+        type: 'input',
+        name:'role',
+        message:'What is there role?',
+        when(answers) {
+            return answers.team === 'add an employee'
+        }
+     },
+     {
+        type: 'input',
+        name:'manager',
+        message:'Who is their manager?',
+        when(answers) {
+            return answers.team === 'add an employee'
+        }
+     },
+     {
+        type: 'input',
+        name:'name',
+        message:'Enter name of role',
+        when(answers) {
+            return answers.team === 'add a role'
+        }
+     },
+     {
+        type: 'input',
+        name:'department',
+        message:'What deparment will this be added to?',
+        when(answers) {
+            return answers.team === 'add a role'
+        }
+     },
+
+];
